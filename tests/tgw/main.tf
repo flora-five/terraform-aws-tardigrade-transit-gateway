@@ -45,6 +45,7 @@ locals {
       blackhole              = false
       default_route_table    = false
       destination_cidr_block = "10.2.0.0/24"
+      prefix_list_id         = null
       # name from `vpc_attachments` or id of a pre-existing tgw attachment
       transit_gateway_attachment = "foo-${local.id}"
       # name from `route_tables` or id of a pre-existing route table
@@ -55,6 +56,7 @@ locals {
       blackhole                   = false
       default_route_table         = false
       destination_cidr_block      = "10.3.0.0/24"
+      prefix_list_id              = null
       transit_gateway_attachment  = "foo-${local.id}"
       transit_gateway_route_table = "bar-${local.id}"
     },
@@ -63,6 +65,7 @@ locals {
       blackhole              = true
       default_route_table    = false
       destination_cidr_block = "10.4.0.0/24"
+      prefix_list_id         = null
       # null is valid when blackhole is true
       transit_gateway_attachment  = null
       transit_gateway_route_table = "foo-${local.id}"
@@ -72,6 +75,7 @@ locals {
       blackhole                   = false
       default_route_table         = true
       destination_cidr_block      = "10.2.0.0/24"
+      prefix_list_id              = null
       transit_gateway_attachment  = "foo-${local.id}"
       transit_gateway_route_table = null
     },
@@ -80,6 +84,7 @@ locals {
       blackhole                   = true
       default_route_table         = true
       destination_cidr_block      = "10.4.0.0/24"
+      prefix_list_id              = null
       transit_gateway_attachment  = null
       transit_gateway_route_table = null
     },
@@ -101,6 +106,7 @@ locals {
           route_table_id              = module.vpc1.private_route_table_ids[0]
           destination_cidr_block      = "10.1.0.0/24"
           destination_ipv6_cidr_block = null
+          destination_prefix_list_id  = null
         }
       ]
       transit_gateway_default_route_table_association = false
@@ -124,6 +130,7 @@ locals {
           route_table_id              = module.vpc2.private_route_table_ids[0]
           destination_cidr_block      = "10.0.0.0/24"
           destination_ipv6_cidr_block = null
+          destination_prefix_list_id  = null
         }
       ]
       transit_gateway_default_route_table_association = true

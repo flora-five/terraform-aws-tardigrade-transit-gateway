@@ -25,9 +25,10 @@ Terraform module for managing a Transit Gateway Route.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_destination_cidr_block"></a> [destination\_cidr\_block](#input\_destination\_cidr\_block) | IPv4 CIDR range used for destination matches | `string` | n/a | yes |
 | <a name="input_transit_gateway_route_table_id"></a> [transit\_gateway\_route\_table\_id](#input\_transit\_gateway\_route\_table\_id) | ID of EC2 Transit Gateway Route Table | `string` | n/a | yes |
 | <a name="input_blackhole"></a> [blackhole](#input\_blackhole) | Boolean indicating whether to drop traffic that matches this route | `bool` | `false` | no |
+| <a name="input_destination_cidr_block"></a> [destination\_cidr\_block](#input\_destination\_cidr\_block) | IPv4 or IPv6 CIDR range used for destination matches | `string` | `null` | no |
+| <a name="input_prefix_list_id"></a> [prefix\_list\_id](#input\_prefix\_list\_id) | ID of EC2 Prefix List used for destination matches | `string` | `null` | no |
 | <a name="input_transit_gateway_attachment_id"></a> [transit\_gateway\_attachment\_id](#input\_transit\_gateway\_attachment\_id) | ID of EC2 Transit Gateway Attachment (required if `blackhole` is `false`) | `string` | `null` | no |
 
 ## Outputs

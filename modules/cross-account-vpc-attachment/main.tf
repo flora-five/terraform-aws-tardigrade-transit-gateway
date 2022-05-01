@@ -45,6 +45,7 @@ module "routes" {
   }
 
   destination_cidr_block         = each.value.destination_cidr_block
+  prefix_list_id                 = each.value.prefix_list_id
   transit_gateway_attachment_id  = module.vpc_accepter.vpc_attachment_accepter.id
   transit_gateway_route_table_id = each.value.transit_gateway_route_table_id
 }

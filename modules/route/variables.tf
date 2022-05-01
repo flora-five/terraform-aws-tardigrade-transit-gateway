@@ -1,6 +1,13 @@
 variable "destination_cidr_block" {
-  description = "IPv4 CIDR range used for destination matches"
+  description = "IPv4 or IPv6 CIDR range used for destination matches"
   type        = string
+  default     = null
+}
+
+variable "prefix_list_id" {
+  description = "ID of EC2 Prefix List used for destination matches"
+  type        = string
+  default     = null
 }
 
 variable "transit_gateway_route_table_id" {

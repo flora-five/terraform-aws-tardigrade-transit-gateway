@@ -27,6 +27,7 @@ module "routes" {
 
   blackhole              = each.value.blackhole
   destination_cidr_block = each.value.destination_cidr_block
+  prefix_list_id         = each.value.prefix_list_id
 
   transit_gateway_route_table_id = each.value.default_route_table ? (
     aws_ec2_transit_gateway.this.association_default_route_table_id) : (

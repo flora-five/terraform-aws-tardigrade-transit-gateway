@@ -100,6 +100,7 @@ locals {
       route_table_id              = rt
       destination_cidr_block      = "10.0.0.0/16"
       destination_ipv6_cidr_block = null
+      destination_prefix_list_id  = null
     }
   ]
 
@@ -110,16 +111,19 @@ locals {
       route_table_id              = rt
       destination_cidr_block      = "10.1.0.0/16"
       destination_ipv6_cidr_block = null
+      destination_prefix_list_id  = null
     }
   ]
 
   routes = [for i, rt in [
     {
       destination_cidr_block         = "10.2.0.0/24"
+      prefix_list_id                 = null
       transit_gateway_route_table_id = module.tgw.route_tables["foo-${local.id}"].route_table.id
     },
     {
       destination_cidr_block         = "10.3.0.0/24"
+      prefix_list_id                 = null
       transit_gateway_route_table_id = module.tgw.route_tables["bar-${local.id}"].route_table.id
     },
   ] : merge(rt, { name = "route-${i}-${local.id}" })]
@@ -142,6 +146,7 @@ locals {
           name                          = "route-bar1-${local.id}"
           blackhole                     = true
           destination_cidr_block        = "10.4.0.0/24"
+          prefix_list_id                = null
           transit_gateway_attachment_id = null
         },
       ]

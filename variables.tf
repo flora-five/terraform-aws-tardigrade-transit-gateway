@@ -84,6 +84,7 @@ variable "routes" {
     blackhole              = bool
     default_route_table    = bool
     destination_cidr_block = string
+    prefix_list_id         = string
     # name from `vpc_attachments` or id of a pre-existing tgw attachment
     transit_gateway_attachment = string
     # name from `route_tables` or id of a pre-existing route table
@@ -108,6 +109,7 @@ variable "vpc_attachments" {
       route_table_id              = string
       destination_cidr_block      = string
       destination_ipv6_cidr_block = string
+      destination_prefix_list_id  = string
     }))
     transit_gateway_default_route_table_association = bool
     transit_gateway_default_route_table_propagation = bool
